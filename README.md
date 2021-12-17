@@ -30,6 +30,7 @@ This is a classic game by Microsoft that requires some math skills ( mainly prob
 1. The game ends when 
 either user wins when all cell numbers in the grid are revealed without any mine exploded 
 or user loses when they left click on a mine
+2. In either case we display all the mines
 
 # Wireframe
 1. MineToGo: 100
