@@ -32,10 +32,10 @@ either user wins when all cell numbers in the grid are revealed without any mine
 or user loses when they left click on a mine
 
 # Wireframe
-MineToGo: 100
-Timer: 
-Reset button:
-Level: Beginner (10x10), Intermidiate (15x15), Expert (15x30)
+1. MineToGo: 100
+2. Timer: 
+3. Reset button:
+4. Level: Beginner (10x10), Intermidiate (15x15), Expert (15x30)
 
 Grid
 
