@@ -14,5 +14,3 @@ User story
 8.	User uses the cell’ number to deduce which cell has flags
 9.	User wins when all cell numbers in the grid are revealed without any mine exploded
 10.	( extra) double click a cell with number and already have all the surrounding flags matching its cell number, all remaining surrounding flags appear)
-
-![image](https://media.git.generalassemb.ly/user/40835/files/288fde80-5f37-11ec-96dd-a649e9647c1c)
