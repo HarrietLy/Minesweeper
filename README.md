@@ -36,7 +36,7 @@ or user loses when they left click on a mine
 1. MineToGo: 100
 2. Timer: 
 3. Reset button:
-4. Level: Beginner (10x10), Intermidiate (15x15), Expert (15x30)
+4. Level: Beginner (10x10), Intermediate (15x15), Expert (15x30)
 
 Grid
 
