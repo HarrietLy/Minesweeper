@@ -1,6 +1,6 @@
 
-let TOTALROW = 15
-let TOTALCOL = 20 //(default grid size)
+let TOTALROW = 10
+let TOTALCOL = 10 //(default grid size)
 
 $(":root")[0].style.setProperty('--totalRow', TOTALROW)
 $(":root")[0].style.setProperty('--totalCol', TOTALCOL)
@@ -34,7 +34,7 @@ const createGridData = () => {
   return gridData
 }
 
-const app = {
+let app = {
   totalMines: Math.floor(TOTALCOL * TOTALROW * 0.16),
   grid: createGridData(TOTALCOL, TOTALROW)
 }
@@ -372,28 +372,54 @@ const handleReset = () => {
   $('#result').text('')
 }
 
-const changeLevel =() => {
+const changeLevel = () => {
   indexLevel = $("#level")[0].selectedIndex
   console.log('indexLevel', indexLevel)
-  if (indexLevel === 1) {
-    TOTALROW = 15
-    TOTALCOL = 15
-  }
-  if (indexLevel === 2) {
-    TOTALROW = 20
-    TOTALCOL = 20
-  }
   if (indexLevel === 0) {
     TOTALROW = 10
     TOTALCOL = 10
   }
+  else if (indexLevel === 1) {
+    TOTALROW = 15
+    TOTALCOL = 15
+  }
+  else if (indexLevel === 2) {
+    TOTALROW = 20
+    TOTALCOL = 20
+  }
   //reset all grid and grids data
-  console.log(app.totalMines)
+  $(":root")[0].style.setProperty('--totalRow', TOTALROW)
+  $(":root")[0].style.setProperty('--totalCol', TOTALCOL)
+  //need to clear grid first before regenerating a grid of different size
+  $('#grid').empty()
+  createEmptyGrid(TOTALROW, TOTALCOL)
+
+  //also need to update the global var app to store new 2D matrix data
+  app = {
+    totalMines: Math.floor(TOTALCOL * TOTALROW * 0.16),
+    grid: createGridData(TOTALCOL, TOTALROW)
+  }
+  console.log(app.grid.length)
+  handleReset()
+  //reattach the event listeners on all the grid cells
+  //handle left click
+  for (let row = 0; row < app.grid.length; row++) {
+    for (let col = 0; col < app.grid[0].length; col++) {
+      let cellid = row.toString() + '-' + col.toString()
+      $("#" + cellid).on('click', handleLeftClick)
+    }
+  }
+  //handle right click
+  for (let row = 0; row < app.grid.length; row++) {
+    for (let col = 0; col < app.grid[0].length; col++) {
+      let cellid = row.toString() + '-' + col.toString()
+      $("#" + cellid).contextmenu(handleRightClick)
+    }
+  }
 }
 
 ///////////////////////////////////////
 const main = () => {
-
 
   createEmptyGrid(TOTALROW, TOTALCOL)
   createMine(app.grid, app.totalMines)
@@ -401,16 +427,16 @@ const main = () => {
   updateNeighborMineCount(app.grid)
 
   //handle left click
-  for (let row = 0; row < TOTALROW; row++) {
-    for (let col = 0; col < TOTALCOL; col++) {
+  for (let row = 0; row < app.grid.length; row++) {
+    for (let col = 0; col < app.grid[0].length; col++) {
       let cellid = row.toString() + '-' + col.toString()
       $("#" + cellid).on('click', handleLeftClick)
     }
   }
 
   //handle right click
-  for (let row = 0; row < TOTALROW; row++) {
-    for (let col = 0; col < TOTALCOL; col++) {
+  for (let row = 0; row < app.grid.length; row++) {
+    for (let col = 0; col < app.grid[0].length; col++) {
       let cellid = row.toString() + '-' + col.toString()
       $("#" + cellid).contextmenu(handleRightClick)
     }
