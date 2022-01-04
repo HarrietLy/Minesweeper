@@ -206,10 +206,10 @@ const checkGameEnd = (app) => {
   if (checkWin(app) || checkLost(app)) {
     clearInterval(cron)
     if (checkWin(app)) {
-      $("#result").text('You Win! Congratulations on successfully avoiding contact with the virus.')
+      $("#result").text('You Win! Congratulations on successfully avoiding contact with the virus.').css('color','green')
     }
     if (checkLost(app)) {
-      $("#result").text('You Lose. Sorry that you have come into contact with the virus.')
+      $("#result").text('You Lose. You have come into contact with the virus. Take care...').css('color','red')
     }
   }
 }
@@ -396,7 +396,7 @@ const changeLevel = () => {
 
   //also need to update the global var app to store new 2D matrix data
   app = {
-    totalMines: Math.floor(TOTALCOL * TOTALROW * 0.16),
+    totalMines: Math.floor(TOTALCOL * TOTALROW * 0.15),
     grid: createGridData(TOTALCOL, TOTALROW)
   }
   console.log(app.grid.length)

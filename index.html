@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Minesweeper</title>
-        
+
         <link rel='stylesheet' href="main.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <!-- <script
                 src="cypress/integration/minesweeper.spec.js"
                 charset="utf-8"></script> -->
-                <script src="app.js"></script>
-                <!-- <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"> -->
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
 </head>
 
@@ -23,27 +23,29 @@
         <!-- <div class="mycontainer"> -->
         <h1>Virussweeper</h1>
         <h3>By Harriet Ly Huyen Trang, 2021</h3>
-        
+
         <h4 id='rules'>How to play:</h4>
         <ul></ul>
         <li>All the basic rules of the classic Minesweeper apply ( just that we now sweep virus instead of mines).</li>
         <li>Right-click on a viral cell to flag it. Left click on a non viral cell to reveal the count of its viral
                 neighbors. Left click on a revealed cell whose ALL neighboring viral cells have been flagged, to reveal
-                the rest of its non-viral neighbors ( this saves you time left clicking, however if you flagged wrongly on non-viral cells, viral neighbor cells will open and you lose).</li>
+                the rest of its non-viral neighbors ( this saves you time left clicking, however if you flagged wrongly
+                on non-viral cells, viral neighbor cells will open and you lose).</li>
         <li>You win when all viral cells have been flagged and all non-viral cells revealed. You lose when one of the
-                revealed cell is actually a virus. With a little probabilistic deduction, you can flag all the viral cells in no
+                revealed cell is actually a virus. With a little probabilistic deduction, you can flag all the viral
+                cells in no
                 time. Good luck!</li>
         <br>
-        <button id='reset'>Reset</button>
-        <br>
-        <br>
-        <form>Level:
+        <form>Grid size:
                 <select id='level'>
-                        <option>Beginner</option>
-                        <option>Intermediate</option>
-                        <option>Advanced</option>
+                        <option>Beginner 10x10</option>
+                        <option>Intermediate 15x15</option>
+                        <option>Advanced 20x20</option>
+                        <option>Custom</option>
                 </select>
         </form>
+        <br>
+        <button id='reset'>Reset</button>
         <h4>Game result: <span id='result'></span></h4>
         <h4>Mines to go: <span id='minetogo'></span></h4>
         <h4 id='timer'>Timer: <span id="minute">00</span>:<span id="second">00</span></h4>
