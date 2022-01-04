@@ -1,29 +1,9 @@
 
-let TOTALROW = 10
-let TOTALCOL = 10 //(default grid size)
+let TOTALROW = 15
+let TOTALCOL = 20 //(default grid size)
 
-
-$(() => {
-  indexLevel = $("#level")[0].selectedIndex
-  console.log('indexLevel', indexLevel)
-  if (indexLevel === 1) {
-    TOTALROW = 15
-    TOTALCOL = 15
-  }
-  if (indexLevel === 2) {
-    TOTALROW = 20
-    TOTALCOL = 20
-  }
-  if (indexLevel === 0) {
-    TOTALROW = 10
-    TOTALCOL = 10
-  }
-  //
-}
-)
-
-// $(":root")[0].style.setProperty('--totalRow', TOTALROW)
-// $(":root")[0].style.setProperty('--totalCol', TOTALCOL)
+$(":root")[0].style.setProperty('--totalRow', TOTALROW)
+$(":root")[0].style.setProperty('--totalCol', TOTALCOL)
 let second = 0
 let minute = 0
 let cron // declare cron at global so both start and stop timer functions can use
@@ -54,10 +34,10 @@ const createGridData = () => {
   return gridData
 }
 
-// const app = {
-//   totalMines: Math.floor(TOTALCOL * TOTALROW * 0.16),
-//   grid: createGridData(TOTALCOL, TOTALROW)
-// }
+const app = {
+  totalMines: Math.floor(TOTALCOL * TOTALROW * 0.16),
+  grid: createGridData(TOTALCOL, TOTALROW)
+}
 
 const createMine = (grid, mineToPlace) => {
   console.log('place mines')
@@ -392,24 +372,27 @@ const handleReset = () => {
   $('#result').text('')
 }
 
-
-
+const changeLevel =() => {
+  indexLevel = $("#level")[0].selectedIndex
+  console.log('indexLevel', indexLevel)
+  if (indexLevel === 1) {
+    TOTALROW = 15
+    TOTALCOL = 15
+  }
+  if (indexLevel === 2) {
+    TOTALROW = 20
+    TOTALCOL = 20
+  }
+  if (indexLevel === 0) {
+    TOTALROW = 10
+    TOTALCOL = 10
+  }
+  //reset all grid and grids data
+  console.log(app.totalMines)
+}
 
 ///////////////////////////////////////
 const main = () => {
-
-  let TOTALROW = 10
-  let TOTALCOL = 10 //(default grid size)
-
-  $(":root")[0].style.setProperty('--totalRow', TOTALROW)
-  $(":root")[0].style.setProperty('--totalCol', TOTALCOL)
-
-  const app = {
-    totalMines: Math.floor(TOTALCOL * TOTALROW * 0.16),
-    grid: createGridData(TOTALCOL, TOTALROW)
-  }
-   
-  let indexLevel = $("#level")[0].selectedIndex
 
 
   createEmptyGrid(TOTALROW, TOTALCOL)
@@ -437,6 +420,7 @@ const main = () => {
   $('#reset').on('click', handleReset)
 
   //handle input level
+  $('#level').change(changeLevel)
 
   renderGridData(app)
 
