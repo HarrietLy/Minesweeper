@@ -38,3 +38,19 @@ body {
   margin: 0 auto;
   /* text-align: center; */
 }
+
+.hidden{
+  display: none;
+}
+
+#custom-grid-form {
+  display: inline-flex;
+}
+
+
+#submit-btn {
+  margin-top: 30px;
+  font-size: 12px;
+     
+   
+}
