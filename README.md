@@ -6,7 +6,7 @@ This is a classic game by Microsoft that requires some math skills ( mainly prob
 
 # Set up
 1. Initial state of the grid: a fixed number of mines are randomly generated in various locations of the grid. 
-2. Hidden under each Cell is either a cell number, neightboring c or a mine
+2. Hidden under each Cell is either a cell number or a mine
     1. a mine, if user click, all mines explode, game over
     2. a cell number if the cell is not mine,  = number of mines in the 8 neighboring cells, the cell number can be 0, 1, 2, 3, 4, 5, 6, 7, 8 
 
